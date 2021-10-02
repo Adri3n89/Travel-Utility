@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct ChangeResponse: Decodable {
+    var rates: [String:Double]
+}
+
+struct Devise {
+    var name: String
+    var value: Double
+}
+
+struct Symbol: Decodable {
+    var symbols: [String:String]
+}

@@ -265,7 +265,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-oY-3gW">
+                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-oY-3gW">
                                                 <rect key="frame" x="107" y="0.0" width="287" height="216"/>
                                             </pickerView>
                                         </subviews>
