@@ -54,7 +54,7 @@ final class WeatherService {
 
     func getWeatherForFiveDays(city:String, unit:String, callback: @escaping (NetworkError?, WeatherForFiveDaysInfo?) -> Void) {
         let baseString = "http://api.openweathermap.org/data/2.5/forecast"
-        let apiKey = "appid=\(weatherKey)"
+        let apiKey = "u\(weatherKey)"
         let city = "q=\(city)"
         let unit = "units=\(unit)"
         let urlString = baseString + "?" + apiKey + "&" + city + "&" + unit
