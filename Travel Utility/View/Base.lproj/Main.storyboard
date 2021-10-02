@@ -12,7 +12,7 @@
         <!--Translate-->
         <scene sceneID="CkR-3q-dZh">
             <objects>
-                <viewController id="1P4-vC-aDx" sceneMemberID="viewController">
+                <viewController id="1P4-vC-aDx" customClass="TranslateController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LSb-1N-JvR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,6 +100,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translate" image="repeat.circle.fill" catalog="system" id="dOK-i4-G04"/>
+                    <connections>
+                        <outlet property="pickerFrom" destination="yGd-wl-OBy" id="zx9-cr-XRT"/>
+                        <outlet property="pickerTo" destination="jUj-zW-muf" id="aT5-xZ-6QR"/>
+                        <outlet property="textViewFrom" destination="yFy-6P-BDr" id="3c3-AE-7xS"/>
+                        <outlet property="textViewTo" destination="nI8-aO-iDH" id="2rQ-yY-44t"/>
+                        <outlet property="translateButton" destination="7KC-Me-v9o" id="0di-vx-YJi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93h-js-SLe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,7 +115,7 @@
         <!--Weather-->
         <scene sceneID="0ec-9R-7Vu">
             <objects>
-                <viewController id="Xmu-d6-m5o" sceneMemberID="viewController">
+                <viewController id="Xmu-d6-m5o" customClass="WeatherController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GZj-mW-RS1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,6 +195,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="cloud.sun.fill" catalog="system" id="Gcc-Ms-X8Z"/>
                     <connections>
+                        <outlet property="languageLabel" destination="oTY-aj-AaL" id="p4g-2H-bXv"/>
+                        <outlet property="newyorkImageView" destination="DCY-dL-kLn" id="KTN-vG-enj"/>
+                        <outlet property="parisImageView" destination="D04-bO-Fcg" id="U6f-5o-9xJ"/>
+                        <outlet property="unitLabel" destination="KsL-aX-pRo" id="tbV-MW-E0x"/>
                         <segue destination="XUF-R1-eGT" kind="show" identifier="Detail" id="6GF-jJ-Y24"/>
                     </connections>
                 </viewController>
@@ -198,7 +209,7 @@
         <!--Change-->
         <scene sceneID="o47-hi-sXc">
             <objects>
-                <viewController id="YyX-9Z-aQA" sceneMemberID="viewController">
+                <viewController id="YyX-9Z-aQA" customClass="ChangeController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kul-MQ-Fto">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,6 +283,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Change" image="eurosign.circle.fill" catalog="system" id="jbn-Jg-8jG"/>
+                    <connections>
+                        <outlet property="deviseConvert" destination="VrM-6B-Uco" id="vHS-Wu-wWX"/>
+                        <outlet property="deviseTextField" destination="Xti-Gw-XS2" id="ziq-am-GdP"/>
+                        <outlet property="pickerFrom" destination="SZX-Es-JRw" id="sns-Rr-dhZ"/>
+                        <outlet property="pickerTo" destination="UEM-oY-3gW" id="YJo-bD-Q5r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okg-7Q-zY0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,10 +313,10 @@
             </objects>
             <point key="canvasLocation" x="-39" y="82"/>
         </scene>
-        <!--View Controller-->
+        <!--Weather Detail Controller-->
         <scene sceneID="Z50-gn-VUz">
             <objects>
-                <viewController id="XUF-R1-eGT" sceneMemberID="viewController">
+                <viewController id="XUF-R1-eGT" customClass="WeatherDetailController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vYg-Ka-8FZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +358,7 @@
                                 <rect key="frame" x="20" y="236" width="374" height="552"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="50" id="TGx-Bq-qIh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="50" id="TGx-Bq-qIh" customClass="WeatherCell" customModule="Travel_Utility" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TGx-Bq-qIh" id="YdE-RS-Mbz">
@@ -387,6 +404,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="Y5Y-Iz-84z" id="nZe-fg-F0G"/>
+                                            <outlet property="iconImageView" destination="t4P-9x-W3c" id="2zX-MB-hZd"/>
+                                            <outlet property="tempLabel" destination="iLM-oA-3hv" id="H3y-4b-997"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -421,6 +443,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5RI-SZ-zFM"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="VZW-JO-3Kq" id="I3Q-VE-ZBp"/>
+                        <outlet property="iconImageView" destination="vo1-Dx-sBW" id="Dkd-uk-qyg"/>
+                        <outlet property="tableView" destination="N8R-HZ-WQX" id="B1P-eD-IO9"/>
+                        <outlet property="temperatureLabel" destination="3Dq-WH-8Jf" id="9wc-ti-rQb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ql2-Yq-KU0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
