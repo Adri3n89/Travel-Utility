@@ -23,7 +23,7 @@ final class ChangeService {
     // MARK: - Methods
 
     func getChange(callback: @escaping (NetworkError?, [Devise]?) -> Void) {
-        let urlString = "http://data.fixer.io/api/latest?access_key=\(currency)"
+        let urlString = "http://data.fixer.io/api/latest?access_key=\(currencyKey)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
@@ -51,7 +51,7 @@ final class ChangeService {
     }
 
     func getSymbols(callback: @escaping (NetworkError?, [String:String]?) -> Void) {
-        let urlString = "http://data.fixer.io/api/symbols?access_key=\(currency)"
+        let urlString = "http://data.fixer.io/api/symbols?access_key=\(currencyKey)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in

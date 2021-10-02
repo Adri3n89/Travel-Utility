@@ -23,6 +23,8 @@
 		7A6E6CB82708E9AB00445D67 /* ChangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CB72708E9AB00445D67 /* ChangeService.swift */; };
 		7A6E6CBA2708EA1F00445D67 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CB92708EA1F00445D67 /* NetworkError.swift */; };
 		7A6E6CBC2708EA7200445D67 /* ChangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CBB2708EA7200445D67 /* ChangeResponse.swift */; };
+		7A6E6CBE2708EF3100445D67 /* TranslateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CBD2708EF3100445D67 /* TranslateService.swift */; };
+		7A6E6CC02708EFD800445D67 /* TranslateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CBF2708EFD800445D67 /* TranslateResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		7A6E6CB72708E9AB00445D67 /* ChangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeService.swift; sourceTree = "<group>"; };
 		7A6E6CB92708EA1F00445D67 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		7A6E6CBB2708EA7200445D67 /* ChangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeResponse.swift; sourceTree = "<group>"; };
+		7A6E6CBD2708EF3100445D67 /* TranslateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateService.swift; sourceTree = "<group>"; };
+		7A6E6CBF2708EFD800445D67 /* TranslateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 		7A6E6CA427085A6F00445D67 /* Translate */ = {
 			isa = PBXGroup;
 			children = (
+				7A6E6CBD2708EF3100445D67 /* TranslateService.swift */,
+				7A6E6CBF2708EFD800445D67 /* TranslateResponse.swift */,
 			);
 			path = Translate;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A6E6CBC2708EA7200445D67 /* ChangeResponse.swift in Sources */,
+				7A6E6CC02708EFD800445D67 /* TranslateResponse.swift in Sources */,
 				7A6E6C882708561300445D67 /* AppDelegate.swift in Sources */,
 				7A6E6CB82708E9AB00445D67 /* ChangeService.swift in Sources */,
 				7A6E6C8A2708561300445D67 /* SceneDelegate.swift in Sources */,
@@ -257,6 +264,7 @@
 				7A6E6CAE2708E54D00445D67 /* WeatherController.swift in Sources */,
 				7A6E6CAC2708E53500445D67 /* TranslateController.swift in Sources */,
 				7A6E6CB22708E57C00445D67 /* WeatherCell.swift in Sources */,
+				7A6E6CBE2708EF3100445D67 /* TranslateService.swift in Sources */,
 				7A6E6CA0270858F300445D67 /* ApiKeys.swift in Sources */,
 				7A6E6CB02708E55E00445D67 /* WeatherDetailController.swift in Sources */,
 				7A6E6CBA2708EA1F00445D67 /* NetworkError.swift in Sources */,

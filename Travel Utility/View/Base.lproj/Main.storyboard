@@ -43,7 +43,7 @@
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGd-wl-OBy">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="150"/>
                                     </pickerView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUj-zW-muf">
+                                    <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUj-zW-muf">
                                         <rect key="frame" x="207" y="0.0" width="207" height="150"/>
                                     </pickerView>
                                 </subviews>
@@ -68,8 +68,11 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="TRANSLATE"/>
+                                        <connections>
+                                            <action selector="translatePushed:" destination="1P4-vC-aDx" eventType="touchUpInside" id="jGL-RG-zjs"/>
+                                        </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nI8-aO-iDH">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nI8-aO-iDH">
                                         <rect key="frame" x="0.0" y="314.5" width="414" height="273.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
