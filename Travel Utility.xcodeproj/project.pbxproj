@@ -35,6 +35,11 @@
 		7A6E6CE62708FA8300445D67 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CE52708FA8300445D67 /* FakeResponseData.swift */; };
 		7A6E6CE82708FAC100445D67 /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E6CE72708FAC100445D67 /* Weather.json */; };
 		7A6E6CEC2708FAE700445D67 /* WeatherFiveDays.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E6CEB2708FAE700445D67 /* WeatherFiveDays.json */; };
+		7A6E6CF42708FD2400445D67 /* TranslateServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CF32708FD2400445D67 /* TranslateServiceTest.swift */; };
+		7A6E6CFB2708FD4B00445D67 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6CFA2708FD4B00445D67 /* FakeResponseData.swift */; };
+		7A6E6CFD2708FD8400445D67 /* Available.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E6CFC2708FD8400445D67 /* Available.json */; };
+		7A6E6CFF2708FD9200445D67 /* AutoTranslate.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E6CFE2708FD9200445D67 /* AutoTranslate.json */; };
+		7A6E6D012708FD9F00445D67 /* Translate.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E6D002708FD9F00445D67 /* Translate.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,13 @@
 			remoteInfo = "Travel Utility";
 		};
 		7A6E6CE02708FA2400445D67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A6E6C7C2708561300445D67 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A6E6C832708561300445D67;
+			remoteInfo = "Travel Utility";
+		};
+		7A6E6CF52708FD2400445D67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A6E6C7C2708561300445D67 /* Project object */;
 			proxyType = 1;
@@ -87,6 +99,12 @@
 		7A6E6CE52708FA8300445D67 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		7A6E6CE72708FAC100445D67 /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
 		7A6E6CEB2708FAE700445D67 /* WeatherFiveDays.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherFiveDays.json; sourceTree = "<group>"; };
+		7A6E6CF12708FD2400445D67 /* TranslateServiceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TranslateServiceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A6E6CF32708FD2400445D67 /* TranslateServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateServiceTest.swift; sourceTree = "<group>"; };
+		7A6E6CFA2708FD4B00445D67 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
+		7A6E6CFC2708FD8400445D67 /* Available.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Available.json; sourceTree = "<group>"; };
+		7A6E6CFE2708FD9200445D67 /* AutoTranslate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AutoTranslate.json; sourceTree = "<group>"; };
+		7A6E6D002708FD9F00445D67 /* Translate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Translate.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +129,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A6E6CEE2708FD2400445D67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,6 +145,7 @@
 				7A6E6C862708561300445D67 /* Travel Utility */,
 				7A6E6CCA2708F7EC00445D67 /* ChangeServiceTest */,
 				7A6E6CDD2708FA2400445D67 /* WeatherServiceTest */,
+				7A6E6CF22708FD2400445D67 /* TranslateServiceTest */,
 				7A6E6C852708561300445D67 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +156,7 @@
 				7A6E6C842708561300445D67 /* Travel Utility.app */,
 				7A6E6CC92708F7EC00445D67 /* ChangeServiceTest.xctest */,
 				7A6E6CDC2708FA2400445D67 /* WeatherServiceTest.xctest */,
+				7A6E6CF12708FD2400445D67 /* TranslateServiceTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,6 +291,18 @@
 			path = WeatherServiceTest;
 			sourceTree = "<group>";
 		};
+		7A6E6CF22708FD2400445D67 /* TranslateServiceTest */ = {
+			isa = PBXGroup;
+			children = (
+				7A6E6CF32708FD2400445D67 /* TranslateServiceTest.swift */,
+				7A6E6CFA2708FD4B00445D67 /* FakeResponseData.swift */,
+				7A6E6CFC2708FD8400445D67 /* Available.json */,
+				7A6E6CFE2708FD9200445D67 /* AutoTranslate.json */,
+				7A6E6D002708FD9F00445D67 /* Translate.json */,
+			);
+			path = TranslateServiceTest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -320,6 +359,24 @@
 			productReference = 7A6E6CDC2708FA2400445D67 /* WeatherServiceTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7A6E6CF02708FD2400445D67 /* TranslateServiceTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A6E6CF72708FD2400445D67 /* Build configuration list for PBXNativeTarget "TranslateServiceTest" */;
+			buildPhases = (
+				7A6E6CED2708FD2400445D67 /* Sources */,
+				7A6E6CEE2708FD2400445D67 /* Frameworks */,
+				7A6E6CEF2708FD2400445D67 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A6E6CF62708FD2400445D67 /* PBXTargetDependency */,
+			);
+			name = TranslateServiceTest;
+			productName = TranslateServiceTest;
+			productReference = 7A6E6CF12708FD2400445D67 /* TranslateServiceTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -341,6 +398,10 @@
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 7A6E6C832708561300445D67;
 					};
+					7A6E6CF02708FD2400445D67 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 7A6E6C832708561300445D67;
+					};
 				};
 			};
 			buildConfigurationList = 7A6E6C7F2708561300445D67 /* Build configuration list for PBXProject "Travel Utility" */;
@@ -359,6 +420,7 @@
 				7A6E6C832708561300445D67 /* Travel Utility */,
 				7A6E6CC82708F7EC00445D67 /* ChangeServiceTest */,
 				7A6E6CDB2708FA2400445D67 /* WeatherServiceTest */,
+				7A6E6CF02708FD2400445D67 /* TranslateServiceTest */,
 			);
 		};
 /* End PBXProject section */
@@ -390,6 +452,16 @@
 			files = (
 				7A6E6CE82708FAC100445D67 /* Weather.json in Resources */,
 				7A6E6CEC2708FAE700445D67 /* WeatherFiveDays.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A6E6CEF2708FD2400445D67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A6E6CFD2708FD8400445D67 /* Available.json in Resources */,
+				7A6E6D012708FD9F00445D67 /* Translate.json in Resources */,
+				7A6E6CFF2708FD9200445D67 /* AutoTranslate.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +509,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A6E6CED2708FD2400445D67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A6E6CF42708FD2400445D67 /* TranslateServiceTest.swift in Sources */,
+				7A6E6CFB2708FD4B00445D67 /* FakeResponseData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -449,6 +530,11 @@
 			isa = PBXTargetDependency;
 			target = 7A6E6C832708561300445D67 /* Travel Utility */;
 			targetProxy = 7A6E6CE02708FA2400445D67 /* PBXContainerItemProxy */;
+		};
+		7A6E6CF62708FD2400445D67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A6E6C832708561300445D67 /* Travel Utility */;
+			targetProxy = 7A6E6CF52708FD2400445D67 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -738,6 +824,52 @@
 			};
 			name = Release;
 		};
+		7A6E6CF82708FD2400445D67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45CCMZA383;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.TranslateServiceTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Travel Utility.app/Travel Utility";
+			};
+			name = Debug;
+		};
+		7A6E6CF92708FD2400445D67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 45CCMZA383;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.AdrienPEREA.TranslateServiceTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Travel Utility.app/Travel Utility";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -773,6 +905,15 @@
 			buildConfigurations = (
 				7A6E6CE32708FA2400445D67 /* Debug */,
 				7A6E6CE42708FA2400445D67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A6E6CF72708FD2400445D67 /* Build configuration list for PBXNativeTarget "TranslateServiceTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A6E6CF82708FD2400445D67 /* Debug */,
+				7A6E6CF92708FD2400445D67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

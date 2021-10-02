@@ -49,6 +49,16 @@
                ReferencedContainer = "container:Travel Utility.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A6E6CF02708FD2400445D67"
+               BuildableName = "TranslateServiceTest.xctest"
+               BlueprintName = "TranslateServiceTest"
+               ReferencedContainer = "container:Travel Utility.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
