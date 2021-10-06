@@ -32,7 +32,6 @@ class ChangeController: UIViewController {
             }
         }
     }
-
     private var deviseArray: [Devise] = [] {
         didSet {
             if symbols.count > 0 {
@@ -51,7 +50,8 @@ class ChangeController: UIViewController {
     }
 
     // MARK: - ViewWillAppear
-    // each time view appear the app check the rate change, so if there is an error, just change tab et go back to try again
+    // each time view appear the app check the rate change
+    // so if there is an error, just change tab et go back to try again
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         changeService.getChange { (error, devise) in

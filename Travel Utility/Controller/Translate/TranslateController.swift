@@ -39,7 +39,6 @@ class TranslateController: UIViewController {
             source = inputLanguages[0].language
         }
     }
-
     // private variable to set the source and target for the API
     private var source = ""
     private var target = ""
@@ -53,7 +52,8 @@ class TranslateController: UIViewController {
     }
 
     // MARK: - ViewWillAppear
-    // each time view appear the app check the languages, so if there is an error, just change tab et go back to try again
+    // each time view appear the app check the languages
+    // so if there is an error, just change tab et go back to try again
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         translateService.getAvailableLanguages { (error, languages) in

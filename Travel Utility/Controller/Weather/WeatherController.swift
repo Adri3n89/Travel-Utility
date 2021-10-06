@@ -31,8 +31,8 @@ class WeatherController: UIViewController {
 
     // MARK: - Private Methods
 
+    // add tapGesture to UIImageView
     private func addTap() {
-        // add tapGesture to UIImageView
         let tapParis = UITapGestureRecognizer(target: self, action: #selector(showParis))
         parisImageView.addGestureRecognizer(tapParis)
         let tapNewYork = UITapGestureRecognizer(target: self, action: #selector(showNewYork))
