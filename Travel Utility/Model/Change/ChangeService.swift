@@ -79,6 +79,7 @@ final class ChangeService {
         
     }
 
+    
     private func decimalOrNot(result: Double) -> String {
         var resultFormated = ""
         let decimal = NumberFormatter()

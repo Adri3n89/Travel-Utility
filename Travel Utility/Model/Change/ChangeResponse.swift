@@ -19,3 +19,4 @@ struct Devise {
 struct Symbol: Decodable {
     var symbols: [String:String]
 }
+
