@@ -27,24 +27,26 @@ final class ChangeService {
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
-                guard let data = data, error == nil else {
-                    callback(.noData, nil)
-                    return
+                DispatchQueue.main.async {
+                    guard let data = data, error == nil else {
+                        callback(.noData, nil)
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                        callback(.badResponse, nil)
+                        return
+                    }
+                    guard let decodedResponse = try? JSONDecoder().decode(ChangeResponse.self, from: data) else {
+                        callback(.undecodableData, nil)
+                        return
+                    }
+                    var deviseArray: [Devise] = []
+                    for element in decodedResponse.rates {
+                        deviseArray.append(Devise(name: element.key, value: element.value))
+                    }
+                    deviseArray = deviseArray.sorted { $0.name < $1.name }
+                    callback(nil, deviseArray)
                 }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(.badResponse, nil)
-                    return
-                }
-                guard let decodedResponse = try? JSONDecoder().decode(ChangeResponse.self, from: data) else {
-                    callback(.undecodableData, nil)
-                    return
-                }
-                var deviseArray: [Devise] = []
-                for element in decodedResponse.rates {
-                    deviseArray.append(Devise(name: element.key, value: element.value))
-                }
-                deviseArray = deviseArray.sorted { $0.name < $1.name }
-                callback(nil, deviseArray)
             })
             task?.resume()
         }
@@ -55,19 +57,21 @@ final class ChangeService {
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
-                guard let data = data, error == nil else {
-                    callback(.noData, nil)
-                    return
+                DispatchQueue.main.async {
+                    guard let data = data, error == nil else {
+                        callback(.noData, nil)
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                        callback(.badResponse, nil)
+                        return
+                    }
+                    guard let decodedResponse = try? JSONDecoder().decode(Symbol.self, from: data) else {
+                        callback(.undecodableData, nil)
+                        return
+                    }
+                    callback(nil, decodedResponse.symbols)
                 }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(.badResponse, nil)
-                    return
-                }
-                guard let decodedResponse = try? JSONDecoder().decode(Symbol.self, from: data) else {
-                    callback(.undecodableData, nil)
-                    return
-                }
-                callback(nil, decodedResponse.symbols)
             })
             task?.resume()
         }

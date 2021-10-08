@@ -11,11 +11,11 @@ class TranslateController: UIViewController {
     
     // MARK: - IBOutlets
 
-    @IBOutlet weak var pickerFrom: UIPickerView!
-    @IBOutlet weak var pickerTo: UIPickerView!
-    @IBOutlet weak var textViewFrom: UITextView!
-    @IBOutlet weak var textViewTo: UITextView!
-    @IBOutlet weak var translateButton: UIButton!
+    @IBOutlet weak private var pickerFrom: UIPickerView!
+    @IBOutlet weak private var pickerTo: UIPickerView!
+    @IBOutlet weak private var textViewFrom: UITextView!
+    @IBOutlet weak private var textViewTo: UITextView!
+    @IBOutlet weak private var translateButton: UIButton!
 
     // MARK: - Variable
 
@@ -27,8 +27,8 @@ class TranslateController: UIViewController {
     private var outputLanguages: [Langue] = [] {
         didSet {
             pickerTo.reloadAllComponents()
-            pickerTo.selectRow(21, inComponent: 0, animated: true)
-            target = outputLanguages[21].language
+            pickerTo.selectRow(english, inComponent: 0, animated: true)
+            target = outputLanguages[english].language
         }
     }
     // here is to go to the Auto-Detect and reload
@@ -42,6 +42,9 @@ class TranslateController: UIViewController {
     // private variable to set the source and target for the API
     private var source = ""
     private var target = ""
+    private let english = 21
+    private let loading = "LOADING"
+    private let translate = "TRANSLATE"
 
     // MARK: - ViewDidLoad
 
@@ -57,13 +60,11 @@ class TranslateController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         translateService.getAvailableLanguages { (error, languages) in
-            DispatchQueue.main.async {
-                if let error = error {
-                    self.presentAlert(message: error.localizedDescription)
-                } else if let languageArray = languages {
-                    self.inputLanguages += languageArray
-                    self.outputLanguages = languageArray
-                }
+            if let error = error {
+                self.presentAlert(message: error.localizedDescription)
+            } else if let languageArray = languages {
+                self.inputLanguages += languageArray
+                self.outputLanguages = languageArray
             }
         }
     }
@@ -71,10 +72,10 @@ class TranslateController: UIViewController {
     // MARK: - Private Methods
 
     private func initPickers() {
-        pickerFrom.delegate = self
         pickerFrom.dataSource = self
-        pickerTo.delegate = self
+        pickerFrom.delegate = self
         pickerTo.dataSource = self
+        pickerTo.delegate = self
     }
 
     private func addTap() {
@@ -87,89 +88,72 @@ class TranslateController: UIViewController {
     // check the source to choose wich URL is need for the request
     @IBAction func translatePushed(_ sender: Any) {
         closeKeyboard()
-        translateButton.titleLabel?.text = "LOADING"
+        translateButton.titleLabel?.text = loading
         translateButton.isEnabled = false
         let encodedString = textViewFrom.text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         if source == "auto" {
             translateService.translateDetect(text: encodedString!, target: target) { (error, translatedString) in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        self.presentAlert(message: error.localizedDescription)
-                    } else if let translation = translatedString {
-                        self.textViewTo.text = translation
-                    }
-                    self.translateButton.titleLabel?.text = "TRANSLATE"
-                    self.translateButton.isEnabled = true
+                if let error = error {
+                    self.presentAlert(message: error.localizedDescription)
+                } else if let translation = translatedString {
+                    self.textViewTo.text = translation
                 }
+                self.translateButton.titleLabel?.text = self.translate
+                self.translateButton.isEnabled = true
             }
         } else  {
             translateService.translate(text: encodedString!, target: target, source: source) { (error, translatedString) in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        self.presentAlert(message: error.localizedDescription)
-                    } else if let translation = translatedString {
-                        self.textViewTo.text = translation
-                    }
-                    self.translateButton.titleLabel?.text = "TRANSLATE"
-                    self.translateButton.isEnabled = true
+                if let error = error {
+                    self.presentAlert(message: error.localizedDescription)
+                } else if let translation = translatedString {
+                    self.textViewTo.text = translation
                 }
+                self.translateButton.titleLabel?.text = self.translate
+                self.translateButton.isEnabled = true
             }
         }
     }
 
 }
 
-// MARK: - Picker Extension
-extension TranslateController: UIPickerViewDelegate, UIPickerViewDataSource {
+// MARK: - PickerDataSource Extension
+extension TranslateController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0 {
-            if inputLanguages.count != 0 {
-                return inputLanguages.count
-            } else {
-                return 1
-            }
+            return inputLanguages.count > 0 ? inputLanguages.count : 1
         } else {
-            if outputLanguages.count != 0 {
-                return outputLanguages.count
-            } else {
-                return 1
-            }
+            return outputLanguages.count > 0 ? outputLanguages.count : 1
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0 {
-            if inputLanguages.count != 0 {
-                return inputLanguages[row].name
-            } else {
-                return "loading"
-            }
+            return inputLanguages.count > 0 ? inputLanguages[row].name : loading
         } else {
-            if outputLanguages.count != 0 {
-                return outputLanguages[row].name
-            } else {
-                return "loading"
-            }
+            return outputLanguages.count > 0 ? outputLanguages[row].name : loading
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 0 {
-            if inputLanguages.count != 0 {
+            if inputLanguages.count > 0 {
                 source = inputLanguages[row].language
             }
         } else {
-            if outputLanguages.count != 0 {
+            if outputLanguages.count > 0 {
                 target = outputLanguages[row].language
             }
         }
     }
 
 }
+
+// MARK: - PickerDelegate Extension
+extension TranslateController: UIPickerViewDelegate {}
 
 // MARK: - TextField Extension
 extension TranslateController: UITextFieldDelegate {

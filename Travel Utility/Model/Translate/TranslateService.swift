@@ -27,19 +27,21 @@ final class TranslateService {
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
-                guard let data = data, error == nil else {
-                    callback(.noData, nil)
-                    return
+                DispatchQueue.main.async {
+                    guard let data = data, error == nil else {
+                        callback(.noData, nil)
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                        callback(.badResponse, nil)
+                        return
+                    }
+                    guard let decodedResponse = try? JSONDecoder().decode(LanguageAvailable.self, from: data) else {
+                        callback(.undecodableData, nil)
+                        return
+                    }
+                    callback(nil, decodedResponse.data.languages)
                 }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(.badResponse, nil)
-                    return
-                }
-                guard let decodedResponse = try? JSONDecoder().decode(LanguageAvailable.self, from: data) else {
-                    callback(.undecodableData, nil)
-                    return
-                }
-                callback(nil, decodedResponse.data.languages)
             })
             task?.resume()
         }
@@ -53,25 +55,27 @@ final class TranslateService {
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
-                guard let data = data, error == nil else {
-                    callback(.noData, nil)
-                    return
+                DispatchQueue.main.async {
+                    guard let data = data, error == nil else {
+                        callback(.noData, nil)
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                        callback(.badResponse, nil)
+                        return
+                    }
+                    guard let decodedResponse = try? JSONDecoder().decode(AutoDetectResponse.self, from: data) else {
+                        callback(.undecodableData, nil)
+                        return
+                    }
+                    callback(nil, decodedResponse.data.translations[0].translatedText)
                 }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(.badResponse, nil)
-                    return
-                }
-                guard let decodedResponse = try? JSONDecoder().decode(AutoDetectResponse.self, from: data) else {
-                    callback(.undecodableData, nil)
-                    return
-                }
-                callback(nil, decodedResponse.data.translations[0].translatedText)
             })
             task?.resume()
         }
     }
 
-   func translate(text: String, target: String, source: String, callback: @escaping (NetworkError?, String?) -> Void) {
+    func translate(text: String, target: String, source: String, callback: @escaping (NetworkError?, String?) -> Void) {
        let urlbase = "https://translation.googleapis.com/language/translate/v2?key=\(translateKey)&format=text"
         let target = "&target=\(target)"
         let source = "&source=\(source)"
@@ -80,19 +84,21 @@ final class TranslateService {
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
-                guard let data = data, error == nil else {
-                    callback(.noData, nil)
-                    return
+                DispatchQueue.main.async {
+                    guard let data = data, error == nil else {
+                        callback(.noData, nil)
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                        callback(.badResponse, nil)
+                        return
+                    }
+                    guard let decodedResponse = try? JSONDecoder().decode(TranslatedResponse.self, from: data) else {
+                        callback(.undecodableData, nil)
+                        return
+                    }
+                    callback(nil, decodedResponse.data.translations[0].translatedText)
                 }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(.badResponse, nil)
-                    return
-                }
-                guard let decodedResponse = try? JSONDecoder().decode(TranslatedResponse.self, from: data) else {
-                    callback(.undecodableData, nil)
-                    return
-                }
-                callback(nil, decodedResponse.data.translations[0].translatedText)
             })
             task?.resume()
         }

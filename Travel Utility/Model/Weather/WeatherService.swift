@@ -23,7 +23,7 @@ final class WeatherService {
     // MARK: - Methods
 
     func getWeather(city:String, unit:String, language:String, callback: @escaping (NetworkError?, WeatherResponse?) -> Void) {
-        let baseString = "https://api.openweathermap.org/data/2.5/weather"
+        let baseString = WeatherURL().weather
         let apiKey = "appid=\(weatherKey)"
         let city = "q=\(city)"
         let unit = "units=\(unit)"
@@ -53,7 +53,7 @@ final class WeatherService {
     }
 
     func getWeatherForFiveDays(city:String, unit:String, callback: @escaping (NetworkError?, WeatherForFiveDaysInfo?) -> Void) {
-        let baseString = "http://api.openweathermap.org/data/2.5/forecast"
+        let baseString = WeatherURL().weather5Days
         let apiKey = "appid=\(weatherKey)"
         let city = "q=\(city)"
         let unit = "units=\(unit)"
@@ -86,7 +86,9 @@ final class WeatherService {
     }
 
     func getIcon(icon: String, callback:@escaping (NetworkError?, Data?) -> Void) {
-        let urlString = "http://openweathermap.org/img/wn/\(icon)@2x.png"
+        let baseString = WeatherURL().weatherIcon
+        let iconString = "\(icon)@2x.png"
+        let urlString = baseString + iconString
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url) { data, response, error in

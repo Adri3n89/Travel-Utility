@@ -11,17 +11,19 @@ class ChangeController: UIViewController {
     
     // MARK: - IBOutlets
 
-    @IBOutlet weak var pickerTo: UIPickerView!
-    @IBOutlet weak var pickerFrom: UIPickerView!
-    @IBOutlet weak var deviseTextField: UITextField!
-    @IBOutlet weak var deviseConvert: UILabel!
+    @IBOutlet weak private var pickerTo: UIPickerView!
+    @IBOutlet weak private var pickerFrom: UIPickerView!
+    @IBOutlet weak private var deviseTextField: UITextField!
+    @IBOutlet weak private var deviseConvert: UILabel!
 
     // MARK: - Variable
 
     let changeService = ChangeService()
 
     // MARK: - Private Variables
-
+    
+    private let euro = 46
+    private let usd = 149
     private var result: ChangeResponse?
     private var inputValue: Double?
     private var outputValue: Double?
@@ -55,19 +57,15 @@ class ChangeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         changeService.getChange { (error, devise) in
-            DispatchQueue.main.async {
-                if let error = error {
-                    self.presentAlert(message: error.localizedDescription)
-                } else if let devise = devise {
-                    self.deviseArray = devise
-                    self.changeService.getSymbols { (error, symbols) in
-                        DispatchQueue.main.async {
-                            if let error = error {
-                                self.presentAlert(message: error.localizedDescription)
-                            } else if let symbols = symbols {
-                                self.symbols = symbols
-                            }
-                        }
+            if let error = error {
+                self.presentAlert(message: error.localizedDescription)
+            } else if let devise = devise {
+                self.deviseArray = devise
+                self.changeService.getSymbols { (error, symbols) in
+                    if let error = error {
+                        self.presentAlert(message: error.localizedDescription)
+                    } else if let symbols = symbols {
+                        self.symbols = symbols
                     }
                 }
             }
@@ -88,10 +86,10 @@ class ChangeController: UIViewController {
     private func actuPicker() {
         pickerFrom.reloadAllComponents()
         pickerTo.reloadAllComponents()
-        pickerFrom.selectRow(46, inComponent: 0, animated: true)
-        pickerTo.selectRow(149, inComponent: 0, animated: true)
-        inputValue = deviseArray[46].value
-        outputValue = deviseArray[149].value
+        pickerFrom.selectRow(euro, inComponent: 0, animated: true)
+        pickerTo.selectRow(usd, inComponent: 0, animated: true)
+        inputValue = deviseArray[euro].value
+        outputValue = deviseArray[usd].value
     }
 
 }
@@ -105,27 +103,15 @@ extension ChangeController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if deviseArray.count != 0 {
-            return deviseArray.count
-        } else {
-            return 1
-        }
+        return deviseArray.count > 0 ? deviseArray.count : 1
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if symbols.count != 0 {
-            return "\(deviseArray[row].name) \(symbols[deviseArray[row].name]!)"
-        } else {
-            return "loading"
-        }
+        return symbols.count > 0 ? "\(deviseArray[row].name) \(symbols[deviseArray[row].name]!)" : "loading"
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 0 {
-            inputValue = deviseArray[row].value
-        } else {
-            outputValue = deviseArray[row].value
-        }
+        pickerView.tag == 0 ? (inputValue = deviseArray[row].value) : (outputValue = deviseArray[row].value)
         if let devise = Double(deviseTextField.text!) {
             deviseConvert.text = changeService.convertDevise(number: devise, input: inputValue!, output: outputValue!)
         }

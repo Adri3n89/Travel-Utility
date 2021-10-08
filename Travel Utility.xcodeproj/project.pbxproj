@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2127D7270F94D400553044 /* WeatherURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2127D6270F94D400553044 /* WeatherURL.swift */; };
 		7A6E6C882708561300445D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6C872708561300445D67 /* AppDelegate.swift */; };
 		7A6E6C8A2708561300445D67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6E6C892708561300445D67 /* SceneDelegate.swift */; };
 		7A6E6C8F2708561300445D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A6E6C8D2708561300445D67 /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A2127D6270F94D400553044 /* WeatherURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherURL.swift; sourceTree = "<group>"; };
 		7A6E6C842708561300445D67 /* Travel Utility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Utility.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6E6C872708561300445D67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A6E6C892708561300445D67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				7A6E6CC12708F4AA00445D67 /* WeatherService.swift */,
 				7A6E6CC32708F4B500445D67 /* WeatherResponse.swift */,
+				7A2127D6270F94D400553044 /* WeatherURL.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A6E6CBC2708EA7200445D67 /* ChangeResponse.swift in Sources */,
+				7A2127D7270F94D400553044 /* WeatherURL.swift in Sources */,
 				7A6E6CC02708EFD800445D67 /* TranslateResponse.swift in Sources */,
 				7A6E6C882708561300445D67 /* AppDelegate.swift in Sources */,
 				7A6E6CB82708E9AB00445D67 /* ChangeService.swift in Sources */,
