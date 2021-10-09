@@ -14,7 +14,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetChangeGivenDataAndGoodResponseAndNoError() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().changeCorrectData
 
@@ -40,7 +39,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetChangeGivenIncorrectDataAndGoodResponseAndNoError() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().changeIncorrectData
 
@@ -66,7 +64,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetChangeGivenErrorAndBadResponse() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let error = FakeResponseData().error
 
@@ -92,7 +89,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetChangeGivenBadResponse() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let jsonData = FakeResponseData().changeCorrectData
 
@@ -120,7 +116,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetSymbolsGivenDataAndGoodResponseAndNoError() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().symbolsCorrectData
 
@@ -146,7 +141,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetSymbolsGivenIncorrectDataAndGoodResponseAndNoError() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().changeIncorrectData
 
@@ -172,7 +166,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetSymbolsGivenErrorAndBadResponse() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let error = FakeResponseData().error
 
@@ -198,7 +191,6 @@ class ChangeServiceTest: XCTestCase {
 
     func testGetSymbolsGivenBadResponse() {
         //given
-        ChangeURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let jsonData = FakeResponseData().changeCorrectData
 
@@ -240,7 +232,7 @@ class ChangeServiceTest: XCTestCase {
 
 }
 
-// fake urlProtocol
+// MARK: - Fake URLProtocol
 final class ChangeURLProtocol: URLProtocol {
     override class func canInit(with request: URLRequest) -> Bool {
         return true

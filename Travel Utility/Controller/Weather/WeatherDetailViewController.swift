@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherDetailController: UIViewController {
+class WeatherDetailViewController: UIViewController {
     
     // MARK: - IBOutlets
 
@@ -66,7 +66,7 @@ class WeatherDetailController: UIViewController {
 
 // MARK: - Extension TableView
 
-extension WeatherDetailController: UITableViewDelegate, UITableViewDataSource {
+extension WeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func setupTableView() {
         tableView.dataSource = self
@@ -77,7 +77,7 @@ extension WeatherDetailController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell") as? WeatherCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constantes.weatherCell) as? WeatherCell {
             if weather5Days != nil {
                 cell.dateLabel.text = weather5Days!.weather[indexPath.row].date
                 cell.tempLabel.text = String(weather5Days!.weather[indexPath.row].temp) + weatherInfo!.unit

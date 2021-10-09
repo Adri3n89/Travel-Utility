@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherController: UIViewController {
+class WeatherViewController: UIViewController {
     
     // MARK: - IBOutlets
 
@@ -41,12 +41,12 @@ class WeatherController: UIViewController {
 
     // set the action to do when tap on Paris
     @objc private func showParis() {
-        setWeatherAndPerformSegue(city: "Paris")
+        setWeatherAndPerformSegue(city: Constantes.paris)
     }
 
     // set the action to do when tap on New York
     @objc private func showNewYork() {
-        setWeatherAndPerformSegue(city: "New+york")
+        setWeatherAndPerformSegue(city: Constantes.newYork)
     }
 
     // setup function to do when tap
@@ -55,14 +55,14 @@ class WeatherController: UIViewController {
         weatherInfo.system = unit
         weatherInfo.unit = unitLabel.text!
         weatherInfo.language = languageLabel.text!
-        performSegue(withIdentifier: "Detail", sender: weatherInfo)
+        performSegue(withIdentifier: Constantes.detail, sender: weatherInfo)
     }
 
     // MARK: - Methods
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Detail" {
-            if let newController = segue.destination as? WeatherDetailController {
+        if segue.identifier == Constantes.detail {
+            if let newController = segue.destination as? WeatherDetailViewController {
                 newController.weatherInfo = sender as? WeatherInfo
             }
         }

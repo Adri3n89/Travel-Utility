@@ -23,7 +23,8 @@ final class TranslateService {
     // MARK: - Methods
 
     func getAvailableLanguages(callback: @escaping (NetworkError?, [Langue]?) -> Void) {
-        let urlString = "https://translation.googleapis.com/language/translate/v2/languages?key=\(translateKey)&target=en"
+        let urlBase = TravelUtilityURL.TranslateURL.available
+        let urlString = "\(urlBase)\(translateKey)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
@@ -32,7 +33,7 @@ final class TranslateService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }
@@ -48,10 +49,10 @@ final class TranslateService {
     }
 
     func translateDetect(text: String, target: String, callback: @escaping (NetworkError?, String?) -> Void) {
-        let urlbase = "https://translation.googleapis.com/language/translate/v2?key=\(translateKey)&format=text"
+        let urlBase = TravelUtilityURL.TranslateURL.translate
         let target = "&target=\(target)"
         let text = "&q=\(text)"
-        let urlString = urlbase + text + target
+        let urlString = "\(urlBase)\(translateKey)\(text)\(target)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
@@ -60,7 +61,7 @@ final class TranslateService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }
@@ -76,11 +77,11 @@ final class TranslateService {
     }
 
     func translate(text: String, target: String, source: String, callback: @escaping (NetworkError?, String?) -> Void) {
-       let urlbase = "https://translation.googleapis.com/language/translate/v2?key=\(translateKey)&format=text"
+        let urlBase = TravelUtilityURL.TranslateURL.translate
         let target = "&target=\(target)"
         let source = "&source=\(source)"
         let text = "&q=\(text)"
-        let urlString = urlbase + target  + text + source
+        let urlString = "\(urlBase)\(translateKey)\(target)\(text)\(source)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
@@ -89,7 +90,7 @@ final class TranslateService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }

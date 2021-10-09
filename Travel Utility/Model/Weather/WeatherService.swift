@@ -23,12 +23,12 @@ final class WeatherService {
     // MARK: - Methods
 
     func getWeather(city:String, unit:String, language:String, callback: @escaping (NetworkError?, WeatherResponse?) -> Void) {
-        let baseString = WeatherURL().weather
+        let baseString = TravelUtilityURL.WeatherURL.current
         let apiKey = "appid=\(weatherKey)"
-        let city = "q=\(city)"
-        let unit = "units=\(unit)"
-        let language = "lang=\(language)"
-        let urlString = baseString + "?" + apiKey + "&" + city + "&" + unit + "&" + language
+        let city = "&q=\(city)"
+        let unit = "&units=\(unit)"
+        let language = "&lang=\(language)"
+        let urlString = "\(baseString)\(apiKey)\(city)\(unit)\(language)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url) { data, response, error in
@@ -37,7 +37,7 @@ final class WeatherService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }
@@ -53,11 +53,11 @@ final class WeatherService {
     }
 
     func getWeatherForFiveDays(city:String, unit:String, callback: @escaping (NetworkError?, WeatherForFiveDaysInfo?) -> Void) {
-        let baseString = WeatherURL().weather5Days
+        let baseString = TravelUtilityURL.WeatherURL.fiveDays
         let apiKey = "appid=\(weatherKey)"
-        let city = "q=\(city)"
-        let unit = "units=\(unit)"
-        let urlString = baseString + "?" + apiKey + "&" + city + "&" + unit
+        let city = "&q=\(city)"
+        let unit = "&units=\(unit)"
+        let urlString = "\(baseString)\(apiKey)\(city)\(unit)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url) { data, response, error in
@@ -66,7 +66,7 @@ final class WeatherService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }
@@ -86,9 +86,9 @@ final class WeatherService {
     }
 
     func getIcon(icon: String, callback:@escaping (NetworkError?, Data?) -> Void) {
-        let baseString = WeatherURL().weatherIcon
+        let baseString = TravelUtilityURL.WeatherURL.icons
         let iconString = "\(icon)@2x.png"
-        let urlString = baseString + iconString
+        let urlString = "\(baseString)\(iconString)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url) { data, response, error in
@@ -97,7 +97,7 @@ final class WeatherService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }

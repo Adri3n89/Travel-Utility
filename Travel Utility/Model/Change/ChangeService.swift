@@ -23,7 +23,8 @@ final class ChangeService {
     // MARK: - Methods
 
     func getChange(callback: @escaping (NetworkError?, [Devise]?) -> Void) {
-        let urlString = "http://data.fixer.io/api/latest?access_key=\(currencyKey)"
+        let urlBase = TravelUtilityURL.ChangeURL.change
+        let urlString = "\(urlBase)\(currencyKey)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
@@ -32,7 +33,7 @@ final class ChangeService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }
@@ -53,7 +54,8 @@ final class ChangeService {
     }
 
     func getSymbols(callback: @escaping (NetworkError?, [String:String]?) -> Void) {
-        let urlString = "http://data.fixer.io/api/symbols?access_key=\(currencyKey)"
+        let urlBase = TravelUtilityURL.ChangeURL.symbols
+        let urlString = "\(urlBase)\(currencyKey)"
         if let url = URL(string: urlString) {
             task?.cancel()
             task = urlSession.dataTask(with: url, completionHandler: { data, response, error in
@@ -62,7 +64,7 @@ final class ChangeService {
                         callback(.noData, nil)
                         return
                     }
-                    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    guard let response = response as? HTTPURLResponse, response.statusCode == Constantes.status else {
                         callback(.badResponse, nil)
                         return
                     }

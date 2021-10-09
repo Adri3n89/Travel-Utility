@@ -14,7 +14,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeatherGivenDataAndGoodResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().weatherCorrectData
 
@@ -40,7 +39,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeatherGivenNoDataAndError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let error = FakeResponseData().error
 
@@ -66,7 +64,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeatherGivenDataAndBadResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let jsonData = FakeResponseData().weatherCorrectData
 
@@ -92,7 +89,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeatherGivenBadDataAndGoodResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().incorrectData
 
@@ -120,7 +116,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeather5DaysGivenDataAndGoodResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().weather5CorrectData
 
@@ -146,7 +141,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeather5DaysGivenNoDataAndError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let error = FakeResponseData().error
 
@@ -172,7 +166,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeather5DaysGivenDataAndBadResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let jsonData = FakeResponseData().weatherCorrectData
 
@@ -198,7 +191,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetWeather5DaysGivenBadDataAndGoodResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().incorrectData
 
@@ -226,7 +218,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetIconGivenDataAndGoodResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let iconData = FakeResponseData().iconData
 
@@ -252,7 +243,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetIconGivenGoodResponseAndError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let error = FakeResponseData().error
 
@@ -278,7 +268,6 @@ class WeatherServiceTests: XCTestCase {
 
     func testGetIconGivenDataAndBadResponseAndNoError() {
         //given
-        WeatherURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let iconData = FakeResponseData().iconData
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TranslateController: UIViewController {
+class TranslateViewController: UIViewController {
     
     // MARK: - IBOutlets
 
@@ -27,12 +27,12 @@ class TranslateController: UIViewController {
     private var outputLanguages: [Langue] = [] {
         didSet {
             pickerTo.reloadAllComponents()
-            pickerTo.selectRow(english, inComponent: 0, animated: true)
-            target = outputLanguages[english].language
+            pickerTo.selectRow(Constantes.english, inComponent: 0, animated: true)
+            target = outputLanguages[Constantes.english].language
         }
     }
     // here is to go to the Auto-Detect and reload
-    private var inputLanguages: [Langue] = [Langue(language: "auto", name: "Auto-Detect")] {
+    private var inputLanguages: [Langue] = [Langue(language: Constantes.auto, name: Constantes.autoDetect)] {
         didSet {
             pickerFrom.reloadAllComponents()
             pickerFrom.selectRow(0, inComponent: 0, animated: true)
@@ -42,9 +42,6 @@ class TranslateController: UIViewController {
     // private variable to set the source and target for the API
     private var source = ""
     private var target = ""
-    private let english = 21
-    private let loading = "LOADING"
-    private let translate = "TRANSLATE"
 
     // MARK: - ViewDidLoad
 
@@ -88,17 +85,17 @@ class TranslateController: UIViewController {
     // check the source to choose wich URL is need for the request
     @IBAction func translatePushed(_ sender: Any) {
         closeKeyboard()
-        translateButton.titleLabel?.text = loading
+        translateButton.titleLabel?.text = Constantes.loading
         translateButton.isEnabled = false
         let encodedString = textViewFrom.text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        if source == "auto" {
+        if source == Constantes.auto {
             translateService.translateDetect(text: encodedString!, target: target) { (error, translatedString) in
                 if let error = error {
                     self.presentAlert(message: error.localizedDescription)
                 } else if let translation = translatedString {
                     self.textViewTo.text = translation
                 }
-                self.translateButton.titleLabel?.text = self.translate
+                self.translateButton.titleLabel?.text = Constantes.translate
                 self.translateButton.isEnabled = true
             }
         } else  {
@@ -108,7 +105,7 @@ class TranslateController: UIViewController {
                 } else if let translation = translatedString {
                     self.textViewTo.text = translation
                 }
-                self.translateButton.titleLabel?.text = self.translate
+                self.translateButton.titleLabel?.text = Constantes.translate
                 self.translateButton.isEnabled = true
             }
         }
@@ -117,7 +114,7 @@ class TranslateController: UIViewController {
 }
 
 // MARK: - PickerDataSource Extension
-extension TranslateController: UIPickerViewDataSource {
+extension TranslateViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -132,9 +129,9 @@ extension TranslateController: UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == 0 {
-            return inputLanguages.count > 0 ? inputLanguages[row].name : loading
+            return inputLanguages.count > 0 ? inputLanguages[row].name : Constantes.loading
         } else {
-            return outputLanguages.count > 0 ? outputLanguages[row].name : loading
+            return outputLanguages.count > 0 ? outputLanguages[row].name : Constantes.loading
         }
     }
 
@@ -153,10 +150,10 @@ extension TranslateController: UIPickerViewDataSource {
 }
 
 // MARK: - PickerDelegate Extension
-extension TranslateController: UIPickerViewDelegate {}
+extension TranslateViewController: UIPickerViewDelegate {}
 
 // MARK: - TextField Extension
-extension TranslateController: UITextFieldDelegate {
+extension TranslateViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         closeKeyboard()
         return true

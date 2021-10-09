@@ -14,7 +14,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testGetAvailableGivenDataAndGoodResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().availableCorrectData
 
@@ -40,7 +39,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testGetAvailableGivenNoDataAndError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let error = FakeResponseData().error
 
@@ -66,7 +64,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testGetAvailableGivenDataAndBadResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let jsonData = FakeResponseData().availableCorrectData
 
@@ -92,7 +89,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testGetAvailableGivenBadDataAndGoodResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().incorrectData
 
@@ -120,7 +116,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testTranslateDetectGivenDataAndGoodResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().autoDetectCorrectData
 
@@ -147,7 +142,6 @@ class TranslateServiceTests: XCTestCase {
     
     func testTranslateDetectGivenNoDataAndError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let error = FakeResponseData().error
 
@@ -173,7 +167,6 @@ class TranslateServiceTests: XCTestCase {
     
     func testTranslateDetectGivenDataAndBadResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let jsonData = FakeResponseData().autoDetectCorrectData
 
@@ -199,7 +192,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testTranslateDetectGivenBadDataAndGoodResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().incorrectData
 
@@ -227,7 +219,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testTranslateGivenDataAndGoodResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().translateCorrectData
 
@@ -254,7 +245,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testTranslateGivenNoDataAndError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let error = FakeResponseData().error
 
@@ -280,7 +270,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testTranslateGivenDataAndBadResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseKO
         let jsonData = FakeResponseData().translateCorrectData
 
@@ -306,7 +295,6 @@ class TranslateServiceTests: XCTestCase {
 
     func testTranslateGivenBadDataAndGoodResponseAndNoError() {
         //given
-        TranslateURLProtocol.loadingHandler = nil
         let response = FakeResponseData().reponseOK
         let jsonData = FakeResponseData().incorrectData
 

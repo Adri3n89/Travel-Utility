@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChangeController: UIViewController {
+class ChangeViewController: UIViewController {
     
     // MARK: - IBOutlets
 
@@ -22,8 +22,6 @@ class ChangeController: UIViewController {
 
     // MARK: - Private Variables
     
-    private let euro = 46
-    private let usd = 149
     private var result: ChangeResponse?
     private var inputValue: Double?
     private var outputValue: Double?
@@ -86,17 +84,17 @@ class ChangeController: UIViewController {
     private func actuPicker() {
         pickerFrom.reloadAllComponents()
         pickerTo.reloadAllComponents()
-        pickerFrom.selectRow(euro, inComponent: 0, animated: true)
-        pickerTo.selectRow(usd, inComponent: 0, animated: true)
-        inputValue = deviseArray[euro].value
-        outputValue = deviseArray[usd].value
+        pickerFrom.selectRow(Constantes.euro, inComponent: 0, animated: true)
+        pickerTo.selectRow(Constantes.usd, inComponent: 0, animated: true)
+        inputValue = deviseArray[Constantes.euro].value
+        outputValue = deviseArray[Constantes.usd].value
     }
 
 }
 
     // MARK: - Extensions
 
-extension ChangeController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension ChangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -107,7 +105,7 @@ extension ChangeController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return symbols.count > 0 ? "\(deviseArray[row].name) \(symbols[deviseArray[row].name]!)" : "loading"
+        return symbols.count > 0 ? "\(deviseArray[row].name) \(symbols[deviseArray[row].name]!)" : Constantes.loading
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -118,7 +116,7 @@ extension ChangeController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-extension ChangeController: UITextFieldDelegate {
+extension ChangeViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         closeKeyboard()

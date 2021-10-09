@@ -12,7 +12,7 @@
         <!--Translate-->
         <scene sceneID="CkR-3q-dZh">
             <objects>
-                <viewController id="1P4-vC-aDx" customClass="TranslateController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1P4-vC-aDx" customClass="TranslateViewController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LSb-1N-JvR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,7 @@
         <!--Weather-->
         <scene sceneID="0ec-9R-7Vu">
             <objects>
-                <viewController id="Xmu-d6-m5o" customClass="WeatherController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xmu-d6-m5o" customClass="WeatherViewController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GZj-mW-RS1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +218,7 @@
         <!--Change-->
         <scene sceneID="o47-hi-sXc">
             <objects>
-                <viewController id="YyX-9Z-aQA" customClass="ChangeController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YyX-9Z-aQA" customClass="ChangeViewController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kul-MQ-Fto">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,10 +322,10 @@
             </objects>
             <point key="canvasLocation" x="-39" y="82"/>
         </scene>
-        <!--Weather Detail Controller-->
+        <!--Weather Detail View Controller-->
         <scene sceneID="Z50-gn-VUz">
             <objects>
-                <viewController id="XUF-R1-eGT" customClass="WeatherDetailController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XUF-R1-eGT" customClass="WeatherDetailViewController" customModule="Travel_Utility" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vYg-Ka-8FZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
